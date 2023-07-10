@@ -6,6 +6,7 @@ import {
   useWindowDimensions,
 } from 'react-native';
 import Animated, {
+  useAnimatedReaction,
   useAnimatedStyle,
   useSharedValue,
   withDecay,
@@ -40,6 +41,13 @@ function App(): JSX.Element {
         rubberBandFactor: 3,
       });
     });
+
+  useAnimatedReaction(
+    () => x.value,
+    value => {
+      console.log(value);
+    },
+  );
 
   return (
     <SafeAreaView>
