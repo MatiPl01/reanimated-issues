@@ -26,7 +26,10 @@ function App(): JSX.Element {
 
         {displayed && (
           <View style={styles.parent}>
-            <Animated.View style={styles.child} exiting={FadeOut} />
+            {/* Animated child component with exiting animation */}
+            <Animated.View style={styles.animatedChild} exiting={FadeOut} />
+            {/* Another child component without exiting animation */}
+            <View style={styles.anotherChild} />
           </View>
         )}
       </View>
@@ -51,16 +54,22 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   parent: {
-    height: 200,
+    height: 300,
     backgroundColor: '#96cae5',
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  child: {
+  animatedChild: {
     width: 100,
     height: 100,
     backgroundColor: '#06196d',
+    borderRadius: 10,
+  },
+  anotherChild: {
+    width: 100,
+    height: 100,
+    backgroundColor: '#fff',
     borderRadius: 10,
   },
 });
