@@ -29,6 +29,7 @@ function App(): JSX.Element {
   const gesture = Gesture.Pan()
     .onChange(e => {
       x.value += e.changeX;
+      console.log(e);
     })
     .onEnd(({velocityX}) => {
       console.log(velocityX);
@@ -42,12 +43,10 @@ function App(): JSX.Element {
     });
 
   return (
-    <SafeAreaView>
-      <GestureHandlerRootView>
+    <SafeAreaView style={styles.container}>
+      <GestureHandlerRootView style={styles.container}>
         <GestureDetector gesture={gesture}>
-          <View>
-            <Animated.View style={[styles.rect, animatedStyle]} />
-          </View>
+          <Animated.View style={[styles.rect, animatedStyle]} />
         </GestureDetector>
       </GestureHandlerRootView>
     </SafeAreaView>
@@ -55,7 +54,9 @@ function App(): JSX.Element {
 }
 
 const styles = StyleSheet.create({
-  wrapper: {},
+  container: {
+    flex: 1,
+  },
   rect: {
     width: RECT_SIZE,
     height: RECT_SIZE,
